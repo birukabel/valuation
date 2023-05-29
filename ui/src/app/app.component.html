@@ -1,0 +1,51 @@
+<!-- topnavbar -->
+<div class="topnav shadow p-1">
+    <div class="headerbar">
+
+        <img src="../assets/testlogo.png" alt="logo"/>
+        
+        <h1> NIB - Enginering Valuation System</h1>
+        <span class="menu" (click)="openNav(true)"><i class="bi bi-list"></i></span>
+        </div>
+      <!-- Orignal code
+       <img src="../assets/logo2.png" alt="logo">
+      
+        <span class="menu" (click)="openNav(true)"><i class="bi bi-list"></i></span>
+      -->
+</div>
+<!-- topnavbar -->
+
+<!-- left sidebar nav  -->
+
+<div  class="sidebar shadow p-2"  id="sidebar"  [ngStyle]="responsiveMenu">
+    <ul>
+        <li><a routerLink=""><i class="bi bi-speedometer2"></i> Dashboard</a></li>
+        <li><a routerLink="/application"><i class="bi bi-cash-stack"></i> Application</a></li>
+        <li><a routerLink="/applicationdetail"><i class="bi bi-distribute-vertical"></i> Application Details</a></li>
+        <li><a routerLink="/assignengineer"><i class="bi bi-person-fill-up"></i> Assign Engineer</a></li>
+        <li><a routerLink="/siteinspection"><i class="bi bi-question"></i> Site Inspection</a></li>
+        <li><a routerLink="/valuation"><i class="bi bi-list-check"></i> Valuation</a></li>
+       
+        <li><a routerLink="/reports"><i class="bi bi-card-text"></i> Reports</a></li>
+        <li>
+            <a href="#"><i class="bi bi-gear"></i> Settings <i class="bi bi-arrow-right icon"></i></a>
+            <ul class="dropdow-container">
+                <li><a href="#">Link1</a></li>
+                <li><a href="#">Link2</a></li>
+            </ul>
+        </li>
+        <li><a routerLink="/users"><i class="bi bi-person-gear"></i> User</a></li>
+        <li><a href="#"><i class="bi bi-box-arrow-left"></i> Logout</a></li>
+
+    </ul>
+</div>
+<!-- left sidebar nav  -->
+
+
+<!-- main content  -->
+
+<div class="main-content" [ngStyle]="responsiveContent">
+    <router-outlet></router-outlet>
+</div>
+
+<!-- main content  -->

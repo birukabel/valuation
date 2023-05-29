@@ -1,0 +1,91 @@
+<p>valuation application form</p>
+
+<form [formGroup]="valuationForm" (ngSubmit)="onFormSubmit()">
+    <div mat-dialog-content class="content">
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Credit Requested</mat-label>
+                <input matInput type="number" placeholder="Ex. 20000000" formControlName="amountofcreditrequest">
+                <div *ngIf="f['amountofcreditrequest'].touched && f['amountofcreditrequest'].invalid" class="alert alert-danger">
+                    <div *ngIf="f['amountofcreditrequest'].errors && f['amountofcreditrequest'].errors['required']">amount of credit requested is required.</div>
+                </div>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Requested By</mat-label>
+                <input matInput type="text" placeholder="Ex. MSME Retail" formControlName="requestedbyname">
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Applicant's Name</mat-label>
+                <input matInput type="text" placeholder="Ex. Biruk Abel" formControlName="applicantname">
+                <div *ngIf="f['applicantname'].touched && f['applicantname'].invalid" class="alert alert-danger">
+                    <div *ngIf="f['applicantname'].errors && f['applicantname'].errors['required']">applicant name is required.</div>
+                </div>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Remark</mat-label>
+                <textarea matInput type="text" placeholder="Ex. This is a valuation request for property valuation..." formControlName="remark"></textarea>
+                <div *ngIf="f['remark'].touched && f['remark'].invalid" class="alert alert-danger">
+                    <div *ngIf="f['remark'].errors && f['remark'].errors['required']">remark is required.</div>
+                </div>
+            </mat-form-field>
+        </div>
+    </div>
+    <div mat-dialog-actions class="action">
+        <button mat-raised-button color="warn" type="button" [mat-dialog-close]="false" style="margin-right: 10px;">Cancel</button>
+        <button mat-raised-button  color="accent" type="submit">{{data ? 'Update': 'Save'}}</button>
+    </div>
+</form>
+
+<!--
+<h1>Angular 15 Reactive Forms Validation Example - ItSolutionStuff.com</h1>
+    
+<form [formGroup]="form" (ngSubmit)="submit()">
+        
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input 
+            formControlName="name"
+            id="name" 
+            type="text" 
+            class="form-control">
+        <div *ngIf="f['name'].touched && f['name'].invalid" class="alert alert-danger">
+            <div *ngIf="f['name'].errors && f['name'].errors['required']">Name is required.</div>
+            <div *ngIf="f['name'].errors && f['name'].errors['minlength']">Name should be 3 character.</div>
+        </div>
+    </div>
+     
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input 
+            formControlName="email"
+            id="email" 
+            type="text" 
+            class="form-control">
+        <div *ngIf="f['email'].touched && f['email'].invalid" class="alert alert-danger">
+            <div *ngIf="f['email'].errors && f['email'].errors['required']">Email is required.</div>
+            <div *ngIf="f['email'].errors && f['email'].errors['email']">Please, enter valid email address.</div>
+        </div>
+    </div>
+     
+    <div class="form-group">
+        <label for="body">Body</label>
+        <textarea 
+            formControlName="body"
+            id="body" 
+            type="text" 
+            class="form-control">
+        </textarea>
+        <div *ngIf="f['body'].touched && f['body'].invalid" class="alert alert-danger">
+            <div *ngIf="f['body'].errors && f['body'].errors['required']">Body is required.</div>
+        </div>
+    </div>
+    
+    <button class="btn btn-primary" [disabled]="form.invalid" type="submit">Submit</button>
+</form>
+-->
+

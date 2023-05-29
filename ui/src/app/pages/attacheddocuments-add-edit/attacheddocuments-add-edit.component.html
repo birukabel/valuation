@@ -1,0 +1,73 @@
+<p>attached documents add edit form</p>
+
+<form [formGroup]="attachedDocumentsDetail" (ngSubmit)="onFormSubmit()">
+    <div mat-dialog-content class="content">
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Document type</mat-label>
+                <mat-select>
+                    <mat-option *ngFor="let documenttype of documenttype" [value]="documenttype.value">
+                        {{documenttype.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Requested By</mat-label>
+                <input matInput type="text" placeholder="Ex. MSME Retail" formControlName="requestedbyname">
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Original/Copy</mat-label>
+                <mat-select>
+                    <mat-option *ngFor="let originalcopy of originalcopy" [value]="originalcopy.value">
+                        {{originalcopy.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+       
+        <app-file-upload></app-file-upload>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Remark</mat-label>
+                <textarea matInput type="text" placeholder="Ex. LHC docment attached for property valuation..."
+                    formControlName="remark"></textarea>
+                <div *ngIf="f['remark'].touched && f['remark'].invalid" class="alert alert-danger">
+                    <div *ngIf="f['remark'].errors && f['remark'].errors['required']">remark is required.</div>
+                </div>
+            </mat-form-field>
+        </div>
+    </div>
+    <div mat-dialog-actions class="action">
+        <button mat-raised-button color="warn" type="button" [mat-dialog-close]="false"
+            style="margin-right: 10px;">Cancel</button>
+        <!--<button mat-raised-button color="accent" type="submit">{{data ? 'Update': 'Save'}}</button>-->
+        <button mat-raised-button color="accent" type="submit">Save</button>
+    </div>
+</form>
+
+<!--
+<form class="attachdocuments-form">
+    <mat-form-field class="attachdocuments-full-width">
+        <mat-label>Document type</mat-label>
+        <mat-select>
+            <mat-option *ngFor="let documenttype of documenttype" [value]="documenttype.value">
+                {{documenttype.viewValue}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="attachdocuments-full-width">
+        <mat-label>Original/Copy</mat-label>
+        <mat-select>
+            <mat-option *ngFor="let originalcopy of originalcopy" [value]="originalcopy.value">
+                {{originalcopy.viewValue}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field class="applicationdetail-full-width">
+        <mat-label>Remark</mat-label>
+        <textarea matInput placeholder="Ex. All required documents have been attached"></textarea>
+    </mat-form-field>
+</form>-->

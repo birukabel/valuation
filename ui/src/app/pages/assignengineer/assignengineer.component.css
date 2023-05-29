@@ -1,0 +1,26 @@
+.assignengineer-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .assignengineer-full-width {
+    width: 100%;
+  }
+.valuation-application-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .valuation-application-full-width {
+    width: 100%;
+  }
+.applicationdetailreadonly-full{
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+.applicationdetailreadonly-full-width{
+    width: 100%;
+}

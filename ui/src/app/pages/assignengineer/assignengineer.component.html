@@ -1,0 +1,205 @@
+<form class="assignengineer-form">
+    <mat-form-field class="assignengineer-full-width">
+        <mat-label>District</mat-label>
+        <mat-select>
+            <mat-option *ngFor="let district of district" [value]="district.value">
+                {{district.viewValue}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</form>
+<br />
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Property Owner Column -->
+    <ng-container matColumnDef="propertyowner">
+        <th mat-header-cell *matHeaderCellDef> Property Owner </th>
+        <td mat-cell *matCellDef="let element"> {{element.propertyowner}} </td>
+    </ng-container>
+
+    <!-- Credit Requested -->
+    <ng-container matColumnDef="creditrequired">
+        <th mat-header-cell *matHeaderCellDef> Credit Required </th>
+        <td mat-cell *matCellDef="let element"> {{element.creditrequired}} </td>
+    </ng-container>
+
+    <!-- Requested Date Column -->
+    <ng-container matColumnDef="requesteddate">
+        <th mat-header-cell *matHeaderCellDef> Requested Date </th>
+        <td mat-cell *matCellDef="let element"> {{element.requesteddate}} </td>
+    </ng-container>
+
+    <!-- Requested By Column -->
+    <ng-container matColumnDef="requestedby">
+        <th mat-header-cell *matHeaderCellDef> Requested By </th>
+        <td mat-cell *matCellDef="let element"> {{element.requestedby}} </td>
+    </ng-container>
+
+    <!-- View Column -->
+    <ng-container matColumnDef="view">
+        <th mat-header-cell *matHeaderCellDef> View </th>
+        <td mat-cell *matCellDef="let element"> {{element.view}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<br />
+<form class="valuation-application-form">
+    <mat-form-field class="valuation-application-full-width">
+        <mat-label>Credit Requested</mat-label>
+        <input matInput placeholder="Ex. 20000000" value="creditrequested" readonly="true">
+    </mat-form-field>
+    <mat-form-field class="valuation-application-full-width">
+        <mat-label>Requested By</mat-label>
+        <input matInput placeholder="Ex. CIBD" value="requestedby" readonly="true">
+    </mat-form-field>
+    <mat-form-field class="valuation-application-full-width" readonly="true">
+        <mat-label>Applicant Name</mat-label>
+        <input matInput placeholder="Ex. CIBD" value="applicantname" readonly="true">
+    </mat-form-field>
+
+    <mat-form-field class="valuation-application-full-width">
+        <mat-label>Remark</mat-label>
+        <textarea matInput placeholder="Ex. This is a valuation request for property valuation..."
+            readonly="true"></textarea>
+    </mat-form-field>
+
+</form>
+<br />
+<table mat-table [dataSource]="dataSource2" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Property Type Column -->
+    <ng-container matColumnDef="propertytype">
+        <th mat-header-cell *matHeaderCellDef> Property Type </th>
+        <td mat-cell *matCellDef="let element"> {{element.propertytype}} </td>
+    </ng-container>
+
+    <!-- Valuation Type -->
+    <ng-container matColumnDef="valuationtype">
+        <th mat-header-cell *matHeaderCellDef> Valuation Type </th>
+        <td mat-cell *matCellDef="let element"> {{element.valuationtype}} </td>
+    </ng-container>
+
+    <!-- Property Owner Column -->
+    <ng-container matColumnDef="propertyowner">
+        <th mat-header-cell *matHeaderCellDef> Property Owner </th>
+        <td mat-cell *matCellDef="let element"> {{element.propertyowner}} </td>
+    </ng-container>
+
+    <!-- Building Status By Column -->
+    <ng-container matColumnDef="buildingstatus">
+        <th mat-header-cell *matHeaderCellDef> buildingstatus </th>
+        <td mat-cell *matCellDef="let element"> {{element.buildingstatus}} </td>
+    </ng-container>
+
+    <!-- View Column -->
+    <ng-container matColumnDef="view">
+        <th mat-header-cell *matHeaderCellDef> View </th>
+        <td mat-cell *matCellDef="let element"> {{element.view}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+</table>
+<br />
+<table mat-table [dataSource]="dataSource3" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Document Type Column -->
+    <ng-container matColumnDef="documenttype">
+        <th mat-header-cell *matHeaderCellDef> Document Type </th>
+        <td mat-cell *matCellDef="let element"> {{element.documenttype}} </td>
+    </ng-container>
+
+    <!-- File Name -->
+    <ng-container matColumnDef="filename">
+        <th mat-header-cell *matHeaderCellDef> File Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.filename}} </td>
+    </ng-container>
+
+    <!-- Copy Original Column -->
+    <ng-container matColumnDef="copyoriginal">
+        <th mat-header-cell *matHeaderCellDef> Copy/Original </th>
+        <td mat-cell *matCellDef="let element"> {{element.copyoriginal}} </td>
+    </ng-container>
+
+    <!-- Created By Column -->
+    <ng-container matColumnDef="createdby">
+        <th mat-header-cell *matHeaderCellDef> Created By. </th>
+        <td mat-cell *matCellDef="let element"> {{element.createdby}} </td>
+    </ng-container>
+
+    <!-- Created Date Column -->
+    <ng-container matColumnDef="createddate">
+        <th mat-header-cell *matHeaderCellDef> Created Date </th>
+        <td mat-cell *matCellDef="let element"> {{element.createddate}} </td>
+    </ng-container>
+
+    <!-- View Column -->
+    <ng-container matColumnDef="view">
+        <th mat-header-cell *matHeaderCellDef> View </th>
+        <td mat-cell *matCellDef="let element"> {{element.view}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns3"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns3;"></tr>
+</table>
+<br />
+<form class="assignengineer-form">
+    <mat-form-field class="assignengineer-full-width">
+        <mat-label>Inspection Date</mat-label>
+        <input matInput [matDatepicker]="picker">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="assignengineer-full-width">
+        <mat-label>Assign Engineer</mat-label>
+        <mat-select>
+            <mat-option *ngFor="let engineer of engineer" [value]="engineer.value">
+                {{engineer.viewValue}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field class="assignengineer-full-width">
+        <mat-label>Site/Town</mat-label>
+        <input matInput placeholder="Ex. CIBD" value="sitetown">
+    </mat-form-field>
+    <mat-form-field class="assignengineer-full-width">
+        <mat-label>Postponed</mat-label>
+        <mat-select>
+            <mat-option *ngFor="let ispostponed of ispostponed" [value]="ispostponed.value">
+                {{ispostponed.viewValue}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field class="assignengineer-full-width">
+        <mat-label>Postponed By</mat-label>
+        <mat-select>
+            <mat-option *ngFor="let postponer of postponer" [value]="postponer.value">
+                {{postponer.viewValue}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field class="assignengineer-full-width">
+        <mat-label>Postponed Date</mat-label>
+        <input matInput [matDatepicker]="picker">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+</form>
+
+<div>
+    <button type="button" class="btn btn-secondary">Save</button>
+    <button type="button" class="btn btn-warning">Cancel</button>
+</div>

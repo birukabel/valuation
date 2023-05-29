@@ -1,0 +1,170 @@
+<form class="valuationreport-form">
+    <mat-form-field class="valuationreport-full-width">
+        <mat-label>District</mat-label>
+        <mat-select>
+            <mat-option *ngFor="let district of district" [value]="district.value">
+                {{district.viewValue}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</form>
+
+<br />
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Property Owner Column -->
+    <ng-container matColumnDef="propertyowner">
+      <th mat-header-cell *matHeaderCellDef> Property Owner </th>
+      <td mat-cell *matCellDef="let element"> {{element.propertyowner}} </td>
+    </ng-container>
+  
+    <!-- Credit Requested Column -->
+    <ng-container matColumnDef="creditrequested">
+      <th mat-header-cell *matHeaderCellDef> Credit Requested </th>
+      <td mat-cell *matCellDef="let element"> {{element.creditrequested}} </td>
+    </ng-container>
+  
+    <!-- Request Date Column -->
+    <ng-container matColumnDef="requestdate">
+      <th mat-header-cell *matHeaderCellDef> Request Date </th>
+      <td mat-cell *matCellDef="let element"> {{element.requestdate}} </td>
+    </ng-container>
+
+     <!-- Requested By Column -->
+     <ng-container matColumnDef="requestedby">
+      <th mat-header-cell *matHeaderCellDef> Requested By. </th>
+      <td mat-cell *matCellDef="let element"> {{element.requestedby}} </td>
+    </ng-container>
+
+     <!-- View Column -->
+     <ng-container matColumnDef="view">
+        <th mat-header-cell *matHeaderCellDef> View </th>
+        <td mat-cell *matCellDef="let element"> {{element.view}} </td>
+      </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<br/>
+<table mat-table [dataSource]="dataSource2" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Insepection Date Column -->
+    <ng-container matColumnDef="insepectiondate">
+        <th mat-header-cell *matHeaderCellDef> Insepection Date </th>
+        <td mat-cell *matCellDef="let element"> {{element.insepectiondate}} </td>
+    </ng-container>
+
+    <!-- Assigned Engineer -->
+    <ng-container matColumnDef="assignedengineer">
+        <th mat-header-cell *matHeaderCellDef> Assigned Engineer </th>
+        <td mat-cell *matCellDef="let element"> {{element.assignedengineer}} </td>
+    </ng-container>
+
+    <!-- Site/Town Column -->
+    <ng-container matColumnDef="sitetown">
+        <th mat-header-cell *matHeaderCellDef> Site/Town </th>
+        <td mat-cell *matCellDef="let element"> {{element.sitetown}} </td>
+    </ng-container>
+
+    <!-- View Column -->
+    <ng-container matColumnDef="view">
+        <th mat-header-cell *matHeaderCellDef> View </th>
+        <td mat-cell *matCellDef="let element"> {{element.view}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+</table>
+
+<br/>
+
+<form class="valuation-form">
+    <mat-label>Complete document recived</mat-label>
+        <mat-select>
+            <mat-option *ngFor="let yesno of yesno" [value]="yesno.value">
+                {{yesno.viewValue}}
+            </mat-option>
+        </mat-select>
+    <mat-form-field class="valuation-full-width" readonly="true">
+        <mat-label>Complete Documents Recived Date</mat-label>
+        <input matInput [matDatepicker]="picker">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="valuation-full-width" readonly="true">
+        <mat-label>Date of Valuation</mat-label>
+        <input matInput [matDatepicker]="pickervaluation">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="pickervaluation"></mat-datepicker-toggle>
+        <mat-datepicker #pickervaluation></mat-datepicker>
+    </mat-form-field>
+    <app-file-upload></app-file-upload>
+    <mat-form-field class="valuation-full-width">
+        <mat-label>Remark</mat-label>
+        <textarea matInput placeholder="Ex. This is a valuation report for property valuation..."></textarea>
+    </mat-form-field>
+</form>
+
+<br/>
+
+<div>
+    <button type="button" class="btn btn-secondary">Save</button>
+    <button type="button" class="btn btn-warning">Cancel</button>
+</div>
+
+<br/>
+
+<form class="checker-form">
+    <mat-form-field class="checker-full-width">
+        <mat-label>Cheker Date</mat-label>
+        <input matInput [matDatepicker]="pickerchecker">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="pickerchecker"></mat-datepicker-toggle>
+        <mat-datepicker #pickerchecker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="checker-full-width" readonly="true">
+        <mat-label>Checker Name</mat-label>
+        <input matInput placeholder="Ex. Biruk Abel" value="checker name" readonly="true">
+    </mat-form-field>
+    <mat-form-field class="checker-full-width">
+        <mat-label>Remark</mat-label>
+        <textarea matInput placeholder="Ex. This is a remark by checker of the valuation report..."></textarea>
+    </mat-form-field>
+</form>
+
+<div>
+    <button type="button" class="btn btn-secondary">Save</button>
+    <button type="button" class="btn btn-warning">Cancel</button>
+</div>
+
+<br/>
+
+<form class="approver-form">
+    <mat-form-field class="approver-full-width" readonly="true">
+        <mat-label>Approver Date</mat-label>
+        <input matInput [matDatepicker]="pickerapprover">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="pickerapprover"></mat-datepicker-toggle>
+        <mat-datepicker #pickerapprover></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="approver-full-width" readonly="true">
+        <mat-label>Approver Name</mat-label>
+        <input matInput placeholder="Ex. Biruk Abel" value="approver name" readonly="true">
+    </mat-form-field>
+    <mat-form-field class="approver-full-width">
+        <mat-label>Remark</mat-label>
+        <textarea matInput placeholder="Ex. This is a remark by approver of the valuation report..."></textarea>
+    </mat-form-field>
+</form>
+<div>
+    <button type="button"  class="btn btn-secondary">Save</button>
+    <button type="button" class="btn btn-warning">Cancel</button>
+</div>

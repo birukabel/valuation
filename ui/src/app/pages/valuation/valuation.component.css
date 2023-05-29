@@ -1,0 +1,41 @@
+table {
+    width: 100%;
+  }
+.valuation-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .valuation-full-width {
+    width: 100%;
+  }
+  .valuationreport-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .valuationreport-full-width {
+    width: 100%;
+  }
+
+  .checker-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .checker-full-width {
+    width: 100%;
+  }
+
+  .approver-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .approver-full-width {
+    width: 100%;
+  }

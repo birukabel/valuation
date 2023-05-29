@@ -1,0 +1,140 @@
+<form class="assignengineer-form">
+    <mat-form-field class="assignengineer-full-width">
+        <mat-label>District</mat-label>
+        <mat-select>
+            <mat-option *ngFor="let district of district" [value]="district.value">
+                {{district.viewValue}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</form>
+
+<br />
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Insepection Date Column -->
+    <ng-container matColumnDef="insepectiondate">
+        <th mat-header-cell *matHeaderCellDef> Insepection Date </th>
+        <td mat-cell *matCellDef="let element"> {{element.insepectiondate}} </td>
+    </ng-container>
+
+    <!-- Assigned Engineer -->
+    <ng-container matColumnDef="assignedengineer">
+        <th mat-header-cell *matHeaderCellDef> Assigned Engineer </th>
+        <td mat-cell *matCellDef="let element"> {{element.assignedengineer}} </td>
+    </ng-container>
+
+    <!-- Site/Town Column -->
+    <ng-container matColumnDef="sitetown">
+        <th mat-header-cell *matHeaderCellDef> Site/Town </th>
+        <td mat-cell *matCellDef="let element"> {{element.sitetown}} </td>
+    </ng-container>
+
+    <!-- View Column -->
+    <ng-container matColumnDef="view">
+        <th mat-header-cell *matHeaderCellDef> View </th>
+        <td mat-cell *matCellDef="let element"> {{element.view}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<br />
+
+<form class="siteinspection-form">
+    <mat-form-field class="siteinspection-full-width">
+        <mat-label>Application Recived Date</mat-label>
+        <input matInput placeholder="Ex.  May/3/2023" value="May/3/2023" readonly="true">
+    </mat-form-field>
+    <mat-form-field class="siteinspection-full-width">
+        <mat-label>Apponited Inspection Date</mat-label>
+        <input matInput placeholder="Ex. May/3/2023" value="May/3/2023" readonly="true">
+    </mat-form-field>
+    <mat-form-field class="siteinspection-full-width" readonly="true">
+        <mat-label>Assigned Engineer Name</mat-label>
+        <input matInput placeholder="Ex. Biruk Abel" value="Biruk Abel" readonly="true">
+    </mat-form-field>
+    <mat-form-field class="siteinspection-full-width" readonly="true">
+        <mat-label>Date of Inspection</mat-label>
+        <input matInput [matDatepicker]="picker">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="siteinspection-full-width" readonly="true">
+        <mat-label>Appointment Postponed</mat-label>
+        <input matInput placeholder="Ex. Yes" value="Yes" readonly="true">
+    </mat-form-field>
+    <mat-form-field class="siteinspection-full-width" readonly="true">
+        <mat-label>Postponed By</mat-label>
+        <input matInput placeholder="Ex. Property Department" value="Property Department" readonly="true">
+    </mat-form-field>
+    <mat-form-field class="siteinspection-full-width" readonly="true">
+        <mat-label>Complete Document Recived</mat-label>
+        <input matInput placeholder="Ex. Yes" value="Yes">
+    </mat-form-field>
+    <mat-form-field class="siteinspection-full-width" readonly="true">
+        <mat-label>Presense of branch mgr/crm</mat-label>
+        <input matInput placeholder="Ex. both were there" value="applicantname">
+    </mat-form-field>
+    <mat-form-field class="siteinspection-full-width" readonly="true">
+        <mat-label>Additional Documents to be fulfilled</mat-label>
+        <input matInput placeholder="Ex. Estimation Fee" value="Approved Plan">
+    </mat-form-field>
+    <mat-form-field class="siteinspection-full-width">
+        <mat-label>Remark</mat-label>
+        <textarea matInput placeholder="Ex. This is a valuation request for property valuation..."></textarea>
+    </mat-form-field>
+
+</form>
+
+<br />
+
+<button class="btn btn-secondary">Attach Documents Recived</button>
+
+<br />
+
+<table mat-table [dataSource]="dataSource2" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- File Name Column -->
+    <ng-container matColumnDef="filename">
+        <th mat-header-cell *matHeaderCellDef> File Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.filename}} </td>
+    </ng-container>
+
+    <!-- Created Date -->
+    <ng-container matColumnDef="createddate">
+        <th mat-header-cell *matHeaderCellDef> Created Date </th>
+        <td mat-cell *matCellDef="let element"> {{element.createddate}} </td>
+    </ng-container>
+
+    <!-- Created By Column -->
+    <ng-container matColumnDef="createdby">
+        <th mat-header-cell *matHeaderCellDef> Created By. </th>
+        <td mat-cell *matCellDef="let element"> {{element.createdby}} </td>
+    </ng-container>
+
+    <!-- View Column -->
+    <ng-container matColumnDef="view">
+        <th mat-header-cell *matHeaderCellDef> View </th>
+        <td mat-cell *matCellDef="let element"> {{element.view}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+</table>
+<br/>
+<app-file-upload></app-file-upload>
+
+<div>
+    <button type="button" class="btn btn-secondary">Save</button>
+    <button type="button" class="btn btn-warning">Cancel</button>
+</div>

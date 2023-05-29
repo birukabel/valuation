@@ -1,0 +1,133 @@
+
+/* topnav css  */
+.topnav {
+    width: 100%;
+    position: fixed;
+    top:0;
+    left: 0;
+    overflow: hidden;
+    background-color: rgb(239,221,111);/*#FFD700;*/
+    border-bottom: 1px solid rgb(128, 128, 128);
+    z-index: 2;
+}
+
+.topnav a {
+    float: left;
+    text-align: center;
+    font-size: 17px;
+    font-weight: bold;
+    padding: 14px 16px;
+}
+
+.menu {
+    float: right;
+    margin-right: 10px;
+    margin-top: 10px;
+    font-size: 30px;
+    cursor: pointer;
+    color: #000;
+    display: none;
+}
+
+.headerbar {
+
+    display: flex;
+    
+  
+    align-items: center;
+    
+    }
+    
+    .headerbar img {
+    
+    margin: 0 30px;
+    width: 100px;
+    height: 100px;
+    
+    }
+
+/* topnav css  */
+
+/* left sidebar nav  */
+
+.sidebar {
+    position: fixed;
+    top: 108px;
+    overflow: auto;
+    /*background-color: #fff;*/
+    background-color:#996515;
+    height: 100%;
+    border-right: 1px solid rgb(128, 128, 128);
+    padding: 30px 5px;
+    margin: 0px;
+    width: 200px;
+    z-index: 2;
+}
+
+.sidebar a {
+    text-decoration: none;
+    padding: 10px 10px;
+    color: #000;
+    text-align: left;
+    display: block;
+}
+
+.sidebar i {
+    padding-right: 10px;
+}
+
+.sidebar .icon {
+    float: right;
+}
+
+.dropdow-container{
+    padding-left: 10px;
+    overflow-y: hidden;
+    max-height: 0px;
+    transition: all .15s ease;
+}
+
+.dropdow-container.show{
+    max-height: 1000px;
+    transition: all .15 ease;
+}
+ul{
+    padding: 0px;
+   
+}
+ul>li>a.active{
+    color: #000;
+}
+
+/* left sidebar nav  */
+
+/* main-content */
+.main-content {
+    margin-left:230px;
+    margin-top: 120px;
+    padding: 10px 18px;
+    transition: margin-left .5s;
+}
+/* main-content */
+
+
+
+@media screen and (max-width:500px) {
+
+    .menu 
+    {
+        display: block;
+    }
+    .sidebar{
+        display: none;
+        width: 160px;
+    }
+    .sidebar a{
+        padding: 10px 0px;
+    }
+    .main-content
+    {
+        margin-left: 0px;
+    }
+
+}
