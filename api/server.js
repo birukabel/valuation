@@ -52,6 +52,8 @@ require("./app/routes/reportaftersiteinspection.routes")(app);
 require("./app/routes/reportduringsiteinspection.routes")(app);
 require("./app/routes/valuationapplication.routes")(app);
 require("./app/routes/file.routes")(app);
+require("./app/routes/district.route")(app);
+require("./app/routes/branch.routes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8082;

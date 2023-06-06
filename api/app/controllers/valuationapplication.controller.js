@@ -1,6 +1,7 @@
 const db = require("../models");
 const Valuationapplication = db.valuationapplication;
-const Op = db.Sequelize.Op;
+//const Op = db.Sequelize.Op;
+const sequelize = db.sequelize;
 
 // Create and Save a new valuation application
 exports.create = (req, res) => {
@@ -70,6 +71,24 @@ exports.findOne = (req, res) => {
           message: "Error retrieving valuationapplication with id=" + id
         });
       });
+};
+
+
+//get valuation application by branch name
+exports.getValuationApplicationByBranch = (req,res)=>{
+  sequelize
+  .query('CALL getValuationApplicationByBranch (:branchName)', 
+        {replacements: { branchName: req.params.branchName, }})
+  .then(data=>{
+    console.log(data);
+    if(data){
+      res.send(data);
+    }else{
+      res.status(404).send({
+        message: `Cannot find valuation application by branch=${req.params.branchName}.`
+      })
+    }
+  })
 };
 
 // Update a valuation application by id in the request

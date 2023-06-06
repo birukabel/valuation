@@ -30,6 +30,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { ValuationappAddEditComponentComponent } from './pages/valuationapp-add-edit.component/valuationapp-add-edit.component.component';
 import { ValuationappdetailAddEditComponent } from './pages/valuationappdetail-add-edit/valuationappdetail-add-edit.component';
 import { AttacheddocumentsAddEditComponent } from './pages/attacheddocuments-add-edit/attacheddocuments-add-edit.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { AssigenengineerAddEditComponent } from './pages/assigenengineer-add-edit/assigenengineer-add-edit.component';
 
 
 @NgModule({
@@ -47,6 +49,7 @@ import { AttacheddocumentsAddEditComponent } from './pages/attacheddocuments-add
     ValuationappAddEditComponentComponent,
     ValuationappdetailAddEditComponent,
     AttacheddocumentsAddEditComponent,
+    AssigenengineerAddEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,7 +68,8 @@ import { AttacheddocumentsAddEditComponent } from './pages/attacheddocuments-add
     MatCheckboxModule,
     FormsModule,
     MatPaginatorModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]

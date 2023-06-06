@@ -96,6 +96,8 @@ exports.findOne = (req, res) => {
       });
 };
 
+
+
 // Update Applicationdetail by id in the request
 exports.update = (req, res) => {
     const id = req.params.id;

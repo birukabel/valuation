@@ -8,6 +8,9 @@ module.exports = app => {
   
     // Retrieve all valuationapplication
     router.get("/", valuationapplication.findAll);
+
+    //Retirve valuation application by branch name
+    router.get("/bybranchname/:branchName",valuationapplication.getValuationApplicationByBranch);
   
     // Retrieve a single valuationapplication with id
     router.get("/:id", valuationapplication.findOne);

@@ -1,8 +1,9 @@
-<input type="search" class="form-control" placeholder="Search" (keyup)="getAllValuationDetailByApplicant($event)">
+<input type="search" class="form-control" placeholder="Search by applicant name"
+    (keyup)="getAllValuationDetailByApplicant($event)">
 <!--This event is fired on every key press-->
- <br/>
+<br />
 
- <!--
+<!--
 <div class="search">
     <input matInput placeholder="Ex. Biruk Abel" value="applicantname" style="margin-right: 10px;">
     <button type="button" id="applicantname" (click)="getAllValuationDetailByApplicant(1)" class="btn btn-secondary">Search</button>
@@ -20,17 +21,17 @@
     <div class="table-container">
         <table mat-table [dataSource]="dataSource" matSort>
 
-            <ng-container  matColumnDef="applicationdetailid">
+            <ng-container matColumnDef="applicationdetailid">
                 <th [hidden]="showDetailId" mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
                 <td mat-cell *matCellDef="let row"> {{row.applicationdetailid}}</td>
             </ng-container>
 
-            <ng-container  matColumnDef="applicationid">
+            <ng-container matColumnDef="applicationid">
                 <th [hidden]="showDetailId" mat-header-cell *matHeaderCellDef mat-sort-header> ApplicationId </th>
                 <td mat-cell *matCellDef="let row"> {{row.applicationid}}</td>
             </ng-container>
 
-            <ng-container  matColumnDef="applicantname">
+            <ng-container matColumnDef="applicantname">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Applicant Name </th>
                 <td mat-cell *matCellDef="let row"> {{row.applicantname}}</td>
             </ng-container>
@@ -53,7 +54,7 @@
             <ng-container matColumnDef="valuationtype">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Valuation Type </th>
                 <td mat-cell *matCellDef="let row"> {{row.valuationtype}}</td>
-            </ng-container>            
+            </ng-container>
 
             <ng-container matColumnDef="action">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
@@ -63,7 +64,7 @@
                     </button>
                     <button mat-icon-button color="primary" (click)="displayAttachedDocuments(row)">
                         <mat-icon>attachment</mat-icon>
-                    </button>                   
+                    </button>
                 </td>
             </ng-container>
 
@@ -76,53 +77,77 @@
             </tr>
         </table>
 
-        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of applications"></mat-paginator>
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" pageSize="10" aria-label="Select page of applications"></mat-paginator>
     </div>
 </div>
 
 <br />
 
-<table *ngIf='showTable' mat-table [dataSource]="dataSource2" class="mat-elevation-z8">
-
-    <!--- Note that these columns can be defined in any order.
+<div class="main-body">
+    <div class="table-container">
+        <table *ngIf='showTable' mat-table [dataSource]="dataSource2" class="mat-elevation-z8">
+            <ng-container matColumnDef="id">
+                <th [hidden]="showDetailId" mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+                <td mat-cell *matCellDef="let row"> {{row.id}}</td>
+            </ng-container>
+            <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
 
-    <!-- Document Type Column -->
-    <ng-container matColumnDef="documenttype">
-        <th mat-header-cell *matHeaderCellDef> Document Type </th>
-        <td mat-cell *matCellDef="let element"> {{element.documenttype}} </td>
-    </ng-container>
+            <!-- Document Type Column -->
+            <ng-container matColumnDef="documenttype">
+                <th mat-header-cell *matHeaderCellDef> Document Type </th>
+                <td mat-cell *matCellDef="let element"> {{element.documenttype}} </td>
+            </ng-container>
 
-    <!-- File Name -->
-    <ng-container matColumnDef="filename">
-        <th mat-header-cell *matHeaderCellDef> File Name </th>
-        <td mat-cell *matCellDef="let element"> {{element.filename}} </td>
-    </ng-container>
+            <!-- File Name -->
+            <ng-container matColumnDef="filename">
+                <th mat-header-cell *matHeaderCellDef> File Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.filename}} </td>
+            </ng-container>
 
-    <!-- Copy Original Column -->
-    <ng-container matColumnDef="copyoriginal">
-        <th mat-header-cell *matHeaderCellDef> Copy/Original </th>
-        <td mat-cell *matCellDef="let element"> {{element.copyoriginal}} </td>
-    </ng-container>
+            <!-- Copy Original Column -->
+            <ng-container matColumnDef="orignalorcopy">
+                <th mat-header-cell *matHeaderCellDef> Copy/Original </th>
+                <td mat-cell *matCellDef="let element"> {{element.orignalorcopy}} </td>
+            </ng-container>
 
-    <!-- Created By Column -->
-    <ng-container matColumnDef="createdby">
-        <th mat-header-cell *matHeaderCellDef> Created By. </th>
-        <td mat-cell *matCellDef="let element"> {{element.createdby}} </td>
-    </ng-container>
+            <!-- Created By Column -->
+            <ng-container matColumnDef="createdby">
+                <th mat-header-cell *matHeaderCellDef> Created By. </th>
+                <td mat-cell *matCellDef="let element"> {{element.createdby}} </td>
+            </ng-container>
 
-    <!-- Created Date Column -->
-    <ng-container matColumnDef="createddate">
-        <th mat-header-cell *matHeaderCellDef> Created Date </th>
-        <td mat-cell *matCellDef="let element"> {{element.createddate}} </td>
-    </ng-container>
+            <!-- Created Date Column -->
+            <ng-container matColumnDef="createddate">
+                <th mat-header-cell *matHeaderCellDef> Created Date </th>
+                <td mat-cell *matCellDef="let element"> {{element.createddate}} </td>
+            </ng-container>
 
-    <!-- View Column -->
-    <ng-container matColumnDef="view">
-        <th mat-header-cell *matHeaderCellDef> View </th>
-        <td mat-cell *matCellDef="let element"> {{element.view}} </td>
-    </ng-container>
+            <!-- View Column -->
+            <!--
+            <ng-container matColumnDef="view">
+                <th mat-header-cell *matHeaderCellDef> View </th>
+                <td mat-cell *matCellDef="let element"> {{element.view}} </td>
+            </ng-container>-->
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
-</table>
+             <!-- Action Column -->
+            <ng-container matColumnDef="edit">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+                <td mat-cell *matCellDef="let row">
+                    <button mat-icon-button color="primary" (click)="openDocumentEditForm(row)">
+                        <mat-icon>list</mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+
+            <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="4">No data matching the filter</td>
+            </tr>
+        </table>
+
+        <!--<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of applications"></mat-paginator>-->
+    </div>
+</div>

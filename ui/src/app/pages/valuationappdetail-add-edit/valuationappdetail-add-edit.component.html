@@ -1,4 +1,8 @@
-<p>valuation application detail form</p>
+<!--<p>valuation application detail form</p>-->
+
+<mat-dialog-content cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle>
+    Application Detail Add/Edit
+</mat-dialog-content>
 
 <div [innerHTML]="documentrequired" style="color: red;"></div>
 <form [formGroup]="valuationDetail" (ngSubmit)="onFormSubmit()">

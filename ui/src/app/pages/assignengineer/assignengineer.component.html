@@ -1,9 +1,39 @@
 <form class="assignengineer-form">
+
+    <h4>mat-select</h4>
+    <mat-form-field>
+        <mat-label>State</mat-label>
+        <mat-select>
+            <input (keyup)="onKey($event.target)">
+            <mat-option>None</mat-option>
+            <mat-option *ngFor="let state of selectedStates" [value]="state">{{state}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="assignengineer-full-width">
+        <mat-label>District</mat-label>
+        <mat-select (selectionChange)="onDistrictChange($event)">
+            <mat-option *ngFor="let districtNew of districtNew" [value]="districtNew.value">
+                {{districtNew.viewValue}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <!--s
     <mat-form-field class="assignengineer-full-width">
         <mat-label>District</mat-label>
         <mat-select>
             <mat-option *ngFor="let district of district" [value]="district.value">
                 {{district.viewValue}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>-->
+
+    <mat-form-field appearance="outline" class="assignengineer-full-width">
+        <mat-label>Branch</mat-label>
+        <mat-select>
+            <mat-option *ngFor="let districtBranch of branchsPerDistrict" [value]="districtBranch.value">
+                {{districtBranch.viewValue}}
             </mat-option>
         </mat-select>
     </mat-form-field>
@@ -14,40 +44,58 @@
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
 
-    <!-- Property Owner Column -->
+    <!-- Applicant Name Column -->
+    <ng-container matColumnDef="applicantname">
+        <th mat-header-cell *matHeaderCellDef> Applicant Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.applicantname}} </td>
+    </ng-container>
+
+    <!-- propertyowner-->
     <ng-container matColumnDef="propertyowner">
         <th mat-header-cell *matHeaderCellDef> Property Owner </th>
         <td mat-cell *matCellDef="let element"> {{element.propertyowner}} </td>
     </ng-container>
 
-    <!-- Credit Requested -->
-    <ng-container matColumnDef="creditrequired">
-        <th mat-header-cell *matHeaderCellDef> Credit Required </th>
-        <td mat-cell *matCellDef="let element"> {{element.creditrequired}} </td>
+    <!-- amountofcreditrequest Column -->
+    <ng-container matColumnDef="amountofcreditrequest">
+        <th mat-header-cell *matHeaderCellDef> Credit Requested </th>
+        <td mat-cell *matCellDef="let element"> {{element.amountofcreditrequest}} </td>
     </ng-container>
 
-    <!-- Requested Date Column -->
-    <ng-container matColumnDef="requesteddate">
-        <th mat-header-cell *matHeaderCellDef> Requested Date </th>
-        <td mat-cell *matCellDef="let element"> {{element.requesteddate}} </td>
+    <!-- requestdate Column -->
+    <ng-container matColumnDef="requestdate">
+        <th mat-header-cell *matHeaderCellDef> Request Date </th>
+        <td mat-cell *matCellDef="let element"> {{element.requestdate}} </td>
     </ng-container>
 
-    <!-- Requested By Column -->
-    <ng-container matColumnDef="requestedby">
+    <!-- requestedbyname column -->
+
+    <ng-container matColumnDef="requestedbyname">
         <th mat-header-cell *matHeaderCellDef> Requested By </th>
-        <td mat-cell *matCellDef="let element"> {{element.requestedby}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.requestedbyname}} </td>
     </ng-container>
 
-    <!-- View Column -->
-    <ng-container matColumnDef="view">
-        <th mat-header-cell *matHeaderCellDef> View </th>
-        <td mat-cell *matCellDef="let element"> {{element.view}} </td>
+    <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+        <td mat-cell *matCellDef="let row">
+            <button mat-icon-button color="primary" (click)="openEditForm(row)">
+                <mat-icon>list</mat-icon>
+            </button>
+            <button mat-icon-button color="primary" (click)="displayAttachedDocuments(row)">
+                <mat-icon>attachment</mat-icon>
+            </button>
+            <button mat-icon-button color="primary">
+                <mat-icon>assignment_ind</mat-icon>
+            </button>
+        </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+
 <br />
+
 <form class="valuation-application-form">
     <mat-form-field class="valuation-application-full-width">
         <mat-label>Credit Requested</mat-label>

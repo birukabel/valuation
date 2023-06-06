@@ -1,0 +1,130 @@
+<mat-dialog-content cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle>
+    Assigen Engineetr Add/Edit
+</mat-dialog-content>
+
+<form [formGroup]="siteInsepection" (ngSubmit)="onFormSubmit()">
+    <div mat-dialog-content class="content">
+        <div class="row" [hidden]="appidshow">
+            <mat-form-field appearance="outline">
+                <mat-label>Inspection Id</mat-label>
+                <input matInput type="number" formControlName="insepectionid">
+            </mat-form-field>
+        </div>
+        <div class="row" [hidden]="appidshow">
+            <mat-form-field appearance="outline">
+                <mat-label>Application Detail Id</mat-label>
+                <input matInput type="number" formControlName="applicationdetailid">
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Assigen Engineer</mat-label>
+                <mat-select formControlName="assigenedgineer">
+                    <mat-option *ngFor="let assigenedgineer of assigenedgineer" [value]="assigenedgineer.value">
+                        {{assigenedgineer.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Inspection Date</mat-label>
+                <input matInput [matDatepicker]="pickerInspectionDate">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="pickerInspectionDate"></mat-datepicker-toggle>
+                <mat-datepicker #pickerInspectionDate></mat-datepicker>
+            </mat-form-field>           
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Site/Town</mat-label>
+                <input matInput type="text" placeholder="Ex. Yeka Sub City Kebele 05"
+                    formControlName="siteortwon">
+                <div *ngIf="f['siteortwon'].touched && f['siteortwon'].invalid"
+                    class="alert alert-danger">
+                    <div *ngIf="f['siteortwon'].errors && f['siteortwon'].errors['required']">specific
+                        address of property is required.</div>
+                </div>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Postponed</mat-label>
+                <mat-select formControlName="postponed">
+                    <mat-option *ngFor="let postponed of postponed" [value]="postponed.value">
+                        {{postponed.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Postponed By</mat-label>
+                <mat-select (selectionChange)="onTypeOfPropertyChange($event)" formControlName="propertytypeid">
+                    <mat-option *ngFor="let postponedby of postponedby"
+                        [value]="postponedby.value">
+                        {{postponedby.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-label>Postponed to Date</mat-label>
+            <input matInput [matDatepicker]="pickerPotponedToDate">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="pickerPotponedToDate"></mat-datepicker-toggle>
+            <mat-datepicker #pickerPotponedToDate></mat-datepicker>
+        </div>
+        <!--
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Quantity</mat-label>
+                <input matInput type="number" placeholder="Ex. 2" formControlName="quantity">
+                <div *ngIf="f['quantity'].touched && f['quantity'].invalid" class="alert alert-danger">
+                    <div *ngIf="f['quantity'].errors && f['quantity'].errors['required']">quantity is required.</div>
+                </div>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Property Owner</mat-label>
+                <input matInput type="text" placeholder="Ex. Biruk Abel" formControlName="propertyowner">
+                <div *ngIf="f['propertyowner'].touched && f['propertyowner'].invalid" class="alert alert-danger">
+                    <div *ngIf="f['propertyowner'].errors && f['propertyowner'].errors['required']">property owner is
+                        required.</div>
+                </div>
+            </mat-form-field>
+        </div>       
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Building Status</mat-label>
+                <mat-select formControlName="buildingstatus">
+                    <mat-option *ngFor="let buildingstatus of buildingstatus" [value]="buildingstatus.value">
+                        {{buildingstatus.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Remark</mat-label>
+                <textarea matInput type="text" placeholder="Ex. All documents have been fulfiled..."
+                    formControlName="remark"></textarea>
+                <div *ngIf="f['remark'].touched && f['remark'].invalid" class="alert alert-danger">
+                    <div *ngIf="f['remark'].errors && f['remark'].errors['required']">remark is required.</div>
+                </div>
+            </mat-form-field>
+        </div>-->
+
+    </div>
+    <div mat-dialog-actions class="action">
+        <button mat-raised-button color="warn" type="button" [mat-dialog-close]="false"
+            style="margin-right: 10px;">Cancel</button>
+        <button mat-raised-button color="accent" type="submit">{{data.quantity ? 'Update': 'Save'}}</button>
+    </div>
+</form>

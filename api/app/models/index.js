@@ -32,6 +32,8 @@ db.checkerapprover = require("./checkerapprover.model.js")(sequelize, Sequelize)
 db.documentsrecivedduringinspection = require("./documentsrecivedduringinspection.model.js")(sequelize, Sequelize);
 db.reportaftersiteinspection = require("./reportaftersiteinspection.model.js")(sequelize, Sequelize);
 db.reportduringsiteinspection = require("./reportduringsiteinspection.model.js")(sequelize, Sequelize);
+db.district = require("./district.model.js")(sequelize, Sequelize);
+db.branch = require("./branch.model.js")(sequelize, Sequelize);
 
 
 module.exports = db;

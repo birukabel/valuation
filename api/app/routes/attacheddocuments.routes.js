@@ -11,6 +11,9 @@ module.exports = app => {
   
     // Retrieve a single attacheddocuments with id
     router.get("/:id", attacheddocuments.findOne);
+
+    //retrive attached documents by applicationdetail id
+    router.get("/byappdetail/:applicationdetailid",attacheddocuments.getDocumentsByApplicationDetailId);
   
     // Update a attacheddocuments with id
     router.put("/:id", attacheddocuments.update);

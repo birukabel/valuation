@@ -16,9 +16,6 @@ module.exports = (sequelize, Sequelize) => {
       status:{
         type: Sequelize.TINYINT
       },
-      quantity: {
-        type: Sequelize.INTEGER
-      },
       orignalorcopy: {
         type: Sequelize.STRING
       },
@@ -36,6 +33,9 @@ module.exports = (sequelize, Sequelize) => {
       },
       updateddate:{
         type: Sequelize.DATE
+      },
+      documenttype:{
+        type:Sequelize.STRING
       }
     },
     {

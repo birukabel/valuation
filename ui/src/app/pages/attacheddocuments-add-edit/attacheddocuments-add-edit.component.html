@@ -1,33 +1,63 @@
-<p>attached documents add edit form</p>
+<!--<p>attached documents add edit form</p>-->
 
-<form [formGroup]="attachedDocumentsDetail" (ngSubmit)="onFormSubmit()">
+<mat-dialog-content cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle>
+    Attached Documents Add/Edit
+</mat-dialog-content>
+
+<form [formGroup]="attachedDocumentsDetail" (ngSubmit)="onFormSubmit()" title="Attached">
     <div mat-dialog-content class="content">
         <div class="row">
             <mat-form-field appearance="outline">
                 <mat-label>Document type</mat-label>
-                <mat-select>
+                <mat-select formControlName="documenttype">
                     <mat-option *ngFor="let documenttype of documenttype" [value]="documenttype.value">
                         {{documenttype.viewValue}}
                     </mat-option>
                 </mat-select>
             </mat-form-field>
+            <!--
             <mat-form-field appearance="outline">
                 <mat-label>Requested By</mat-label>
                 <input matInput type="text" placeholder="Ex. MSME Retail" formControlName="requestedbyname">
-            </mat-form-field>
+            </mat-form-field>-->
         </div>
         <div class="row">
             <mat-form-field appearance="outline">
                 <mat-label>Original/Copy</mat-label>
-                <mat-select>
+                <mat-select formControlName="orignalorcopy">
                     <mat-option *ngFor="let originalcopy of originalcopy" [value]="originalcopy.value">
                         {{originalcopy.viewValue}}
                     </mat-option>
                 </mat-select>
             </mat-form-field>
         </div>
-       
-        <app-file-upload></app-file-upload>
+
+        <app-file-upload (fileToUpload)="addItem($event)"></app-file-upload>
+        <!--
+        <ul>
+            <li *ngFor="let item of items" formControlName="filename">{{item}}</li>
+        </ul>
+        <div class="row">
+            <mat-form-field appearance="outline">               
+                <input matInput type="text"  formControlName="requestedbyname">
+            </mat-form-field>
+        </div>-->
+
+        <!--
+        <div class="row" *ngFor="let item of items">
+            <mat-form-field appearance="outline" formControlName="filename">
+                <mat-label>File to upload</mat-label>
+                <textarea matInput type="text" placeholder="{{item}}" value="{{item}}" name="filename"
+                    formControlName="filename">{{item}}</textarea>
+            </mat-form-field>
+        </div>-->
+
+        <div class="row">
+            <!--<p *ngFor="let item of items">
+                <span>{{ item }}</span>
+                <p *ngFor="let item of items">-->
+            <input type="text" formControlName="filename" [(ngModel)]="items[0]" readonly style="border:0">
+        </div>
         <div class="row">
             <mat-form-field appearance="outline">
                 <mat-label>Remark</mat-label>
@@ -42,10 +72,12 @@
     <div mat-dialog-actions class="action">
         <button mat-raised-button color="warn" type="button" [mat-dialog-close]="false"
             style="margin-right: 10px;">Cancel</button>
-        <!--<button mat-raised-button color="accent" type="submit">{{data ? 'Update': 'Save'}}</button>-->
-        <button mat-raised-button color="accent" type="submit">Save</button>
+        <button mat-raised-button color="accent" type="submit">{{data ? 'Update': 'Save'}}</button>
+        <!--<button mat-raised-button color="accent" type="submit">Save</button>-->
     </div>
 </form>
+
+
 
 <!--
 <form class="attachdocuments-form">

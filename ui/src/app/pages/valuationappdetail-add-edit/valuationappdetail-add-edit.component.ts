@@ -37,6 +37,7 @@ export class ValuationappdetailAddEditComponent implements OnInit {
   appidshow: boolean = true;
   attachedDocuments: FormGroup;
   
+  
   constructor(
     private _fb: FormBuilder,
     private _fb2:FormBuilder,
@@ -80,6 +81,8 @@ export class ValuationappdetailAddEditComponent implements OnInit {
       documenttype: 1,
     });
   }
+
+  
 
   ngOnInit(): void {
     this.valuationDetail.patchValue(this.data);

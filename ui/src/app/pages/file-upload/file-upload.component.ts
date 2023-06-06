@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Output,EventEmitter } from '@angular/core';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { FileUploadService } from 'src/app/services/file-upload.service';
@@ -13,6 +13,7 @@ export class FileUploadComponent implements OnInit {
   currentFile?: File;
   progress = 0;
   message = '';
+  @Output() fileToUpload = new EventEmitter<string>();
 
   fileInfos?: Observable<any>;
 
@@ -22,19 +23,25 @@ export class FileUploadComponent implements OnInit {
     this.fileInfos = this.uploadService.getFiles();
   }
 
+  addNewItem(value: string) {
+    this.fileToUpload.emit(value);
+  }
+
   selectFile(event: any): void {
     this.selectedFiles = event.target.files;
   }
 
   upload(): void {
     this.progress = 0;
-
+    
     if (this.selectedFiles) {
       const file: File | null = this.selectedFiles.item(0);
 
       if (file) {
         this.currentFile = file;
 
+        this.addNewItem(this.currentFile.name);
+        
         this.uploadService.upload(this.currentFile).subscribe({
           next: (event: any) => {
             if (event.type === HttpEventType.UploadProgress) {
